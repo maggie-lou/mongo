@@ -121,7 +121,7 @@ def _get_bson_type_check(bson_element, ctxt_name, ast_type):
     # type: (str, str, ast.Type) -> str
     """Get the C++ bson type check for a Type."""
     # Deduplicate the types in the array.
-    bson_types = list(set(ast_type.bson_serialization_type))
+    bson_types = sorted(set(ast_type.bson_serialization_type))
     if len(bson_types) == 1:
         if bson_types[0] in ["any", "chain"]:
             # Skip BSON validation for 'any' types since they are required to validate the
